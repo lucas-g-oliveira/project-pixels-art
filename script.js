@@ -3,10 +3,8 @@
 let colorsPalet = {
     'black': 'black',
     'red': 'red',
-    'green': 'green',
     'blue': 'blue',
-    'yellow': 'yellow',
-    'orange': 'orange',
+    'green': 'green',
 }
 
 //cria a paleta
@@ -17,6 +15,8 @@ for (data in colorsPalet) {
     createTempElement.classList = 'color';
     createTempElement.id = data;
     createTempElement.style.backgroundColor = colorsPalet[data];
+    createTempElement.addEventListener('click',getColorPalet);
+
 
     elementSRC.appendChild(createTempElement);
 }
@@ -29,6 +29,21 @@ for (let index = 1; index <= 25; index += 1) {
     createTempElement.classList = 'pixel';
     createTempElement.id = 'id-pixel-'+index;
     createTempElement.style.backgroundColor = 'rgb(255,255,255)';
+    createTempElement.addEventListener('click',paintPixel)
 
     elementSRC.appendChild(createTempElement);
+}
+
+//seleciona a cor preta na paleta ao iniciar a pagina
+let colorSelected = document.querySelector('#black').style.backgroundColor;
+console.log(colorSelected);
+
+//pega a cor da paleta
+function getColorPalet(event){
+    colorSelected = event.target.style.backgroundColor;
+}
+
+//pinta o pixel da grade
+function paintPixel(event){
+    event.target.style.backgroundColor = colorSelected;
 }

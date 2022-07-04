@@ -14,15 +14,18 @@ h1{
     display: flex;
     width: 540px;
     height: 43px;
-    background-color: aqua;
+    color: aqua;
 }
 .pixel{
     width: 40px;
     height: 40px;
     border: solid 1px black;
-    margin: 1px;
+    margin: -1px;
     display: grid;
 }
-.pixel-board{
-    background-color: aqua;
+#pixel-board{
+    display: flex;
+    flex-wrap: wrap;
+    width: 220px;
+    height: 200px;
 }
