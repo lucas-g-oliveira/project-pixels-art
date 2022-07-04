@@ -1,4 +1,28 @@
 .color{
+    display: inline-block;
+    width: 40px;
+    height: 40px;
     border: 1px;
-    
+    color: black;
+    border: solid 1px black;
+    margin: 2px;
+}
+h1{
+    display: inline-flex;
+}
+#color-pallete{
+    display: flex;
+    width: 540px;
+    height: 43px;
+    background-color: aqua;
+}
+.pixel{
+    width: 40px;
+    height: 40px;
+    border: solid 1px black;
+    margin: 1px;
+    display: grid;
+}
+.pixel-board{
+    background-color: aqua;
 }
