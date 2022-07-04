@@ -16,7 +16,9 @@ for (data in colorsPalet) {
     createTempElement.id = data;
     createTempElement.style.backgroundColor = colorsPalet[data];
     createTempElement.addEventListener('click',getColorPalet);
-
+    if(data == black){
+        createTempElement.classList.add('selected');
+    }
 
     elementSRC.appendChild(createTempElement);
 }
@@ -40,6 +42,7 @@ console.log(colorSelected);
 
 //pega a cor da paleta
 function getColorPalet(event){
+
     colorSelected = event.target.style.backgroundColor;
 }
 
