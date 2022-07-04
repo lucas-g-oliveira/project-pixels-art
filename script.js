@@ -16,11 +16,13 @@ for (data in colorsPalet) {
     createTempElement.id = data;
     createTempElement.style.backgroundColor = colorsPalet[data];
     createTempElement.addEventListener('click',getColorPalet);
-    if(data == black){
+
+    if(data == colorsPalet.black){
         createTempElement.classList.add('selected');
     }
 
     elementSRC.appendChild(createTempElement);
+    
 }
 
 //cria a grade inicial, com 25 px
@@ -42,6 +44,15 @@ console.log(colorSelected);
 
 //pega a cor da paleta
 function getColorPalet(event){
+    for(let data in colorsPalet){
+        let getElementTemp = document.getElementById(data);
+
+        if(data == event.target.id){
+            getElementTemp.classList.add('selected');
+        }else{
+            getElementTemp.classList.remove('selected');
+        }
+    }
 
     colorSelected = event.target.style.backgroundColor;
 }
