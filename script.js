@@ -1,0 +1,1 @@
+let  classColorsPixels = 'color';
