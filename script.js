@@ -25,20 +25,35 @@ for (data in colorsPalet) {
 
 }
 
+let elementParentOfPixelBoard = document.getElementById('flexible-div');
+let newElementDiv = document.createElement('div');
+newElementDiv.id = "pixel-board";
+elementParentOfPixelBoard.appendChild(newElementDiv);
+
 //cria a grade inicial, com 25 px
-for (let index = 1; index <= 25; index += 1) {
-    let elementSRC = document.querySelector('#pixel-board');
+createPixels();
+function createPixels(valor = 0) {
+    if (valor <= 5 || valor == 'undefined') {
+        valor = 25;
+    } else if (valor >= 50) {
+        valor = 2500
+    } else {
+        valor *= valor;
+    }
 
-    let createTempElement = document.createElement('div');
-    createTempElement.classList = 'pixel';
-    createTempElement.id = 'id-pixel-' + index;
-    createTempElement.style.backgroundColor = 'rgb(255,255,255)';
+    for (let index = 1; index <= valor; index += 1) {
+        let elementSRC = document.querySelector('#pixel-board');
+        let createTempElement = document.createElement('div');
+        createTempElement.classList = 'pixel';
+        createTempElement.id = 'id-pixel-' + index;
+        createTempElement.style.backgroundColor = 'rgb(255,255,255)';
 
-    //adiciona a função listaner na criação do elemento
-    createTempElement.addEventListener('click', (event) => {
-        event.target.style.backgroundColor = colorSelected;
-    })
-    elementSRC.appendChild(createTempElement);
+        //adiciona a função listaner na criação do elemento
+        createTempElement.addEventListener('click', (event) => {
+            event.target.style.backgroundColor = colorSelected;
+        })
+        elementSRC.appendChild(createTempElement);
+    }
 }
 
 //seleciona a cor preta na paleta ao iniciar a pagina
@@ -59,11 +74,32 @@ function getColorPalet(event) {
 }
 
 
-//limpa todos os pixels
+//botão que limpa todos os pixels
 let clearButton = document.getElementById('clear-board');
 clearButton.addEventListener('click', () => {
     let getElementTemp = document.getElementsByClassName('pixel');
     for (let index = 0; index < getElementTemp.length; index += 1) {
         getElementTemp[index].style.backgroundColor = 'rgb(255,255,255)';
     }
+});
+
+
+// botão que refaz os pixels
+let generateButton = document.querySelector('#generate-board');
+let boardSize = document.getElementById('board-size');
+generateButton.addEventListener('click', () => {
+
+    if (boardSize.value == '') {
+        window.alert('Board inválido!');
+    } else {
+        let allPixelsCreated = document.querySelectorAll('.pixel');
+        //console.log(allPixelsCreated);
+        for (let data of allPixelsCreated) {
+            data.remove();
+        }
+
+        createPixels(boardSize.value);
+        boardSize.value = '';
+    }
+
 });
