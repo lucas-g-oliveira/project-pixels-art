@@ -8,22 +8,28 @@ let colorsPalet = {
 }
 
 //cria a paleta
-for (data in colorsPalet) {
-    let elementSRC = document.querySelector('#color-palette');
 
-    let createTempElement = document.createElement('div');
-    createTempElement.classList = 'color';
-    createTempElement.id = data;
-    createTempElement.style.backgroundColor = colorsPalet[data];
-    createTempElement.addEventListener('click', getColorPalet);
 
-    if (data == colorsPalet.black) {
-        createTempElement.classList.add('selected');
+generatePallet();
+function generatePallet(){
+    randomizeColors();
+    for (data in colorsPalet) {
+        let elementSRC = document.querySelector('#color-palette');
+    
+        let createTempElement = document.createElement('div');
+        createTempElement.classList = 'color';
+        createTempElement.id = data;
+        createTempElement.style.backgroundColor = colorsPalet[data];
+        createTempElement.addEventListener('click', getColorPalet);
+    
+        if (data == colorsPalet.black) {
+            createTempElement.classList.add('selected');
+        }
+    
+        elementSRC.appendChild(createTempElement);
     }
-
-    elementSRC.appendChild(createTempElement);
-
 }
+
 
 let elementParentOfPixelBoard = document.getElementById('flexible-div');
 let newElementDiv = document.createElement('div');
@@ -32,6 +38,7 @@ elementParentOfPixelBoard.appendChild(newElementDiv);
 
 //cria a grade inicial, com 25 px
 createPixels();
+
 function createPixels(valor = 0) {
     if (valor <= 5 || valor == 'undefined') {
         valor = 25;
@@ -103,3 +110,22 @@ generateButton.addEventListener('click', () => {
     }
 
 });
+
+//gera as cores aleatórias
+function randomizeColors(){
+    let palletColors = document.querySelectorAll('.color');
+    for (data in colorsPalet) {
+        if (data != 'black') {
+            let red = parseInt(Math.random() * 255);
+            let green = parseInt(Math.random() * 255);
+            let blue = parseInt(Math.random() * 255);
+            colorsPalet[data]='rgb(' + red + ',' + green + ',' + blue + ')';
+        }
+    }
+    for(let data of palletColors){
+        data.remove();
+    }
+};
+
+
+
