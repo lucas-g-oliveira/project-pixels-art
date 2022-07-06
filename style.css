@@ -1,33 +1,45 @@
+#container{
+    background-color: yellow;
+    display: grid;
+    flex-direction: column;
+    justify-items: center;
+
+    width: 100%;
+}
+body{
+    background-color: yellow;
+}
+
 .color{
     display: inline-block;
     width: 40px;
     height: 40px;
-    border: 1px;
     color: black;
     border: solid 1px black;
     margin: 2px;
 }
 h1{
+
     display: inline-flex;
 }
 #color-pallete{
     display: flex;
     width: 540px;
-    height: 43px;
+    height: 40px;
 }
 
 .pixel{
     width: 40px;
     height: 40px;
     border: solid 1px black;
-    margin: -0.5px;
+    margin: -1px;
+    overflow-wrap: normal;
 }
+
 #pixel-board{
     display: flex;
     flex-wrap: wrap;
-    width: 220px;
-    height: 200px;
 }
-#flexible-div{
-    background-color: aqua;
+#input-area, #clear-board{
+    margin: 10px;
 }
